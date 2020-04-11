@@ -26,11 +26,11 @@ const covid19ImpactEstimator = (data) => {
   const severeCasesByRequestedTimeSevereImpact = Math.floor(0.15 * infectionsByRequestedTimeSevereImpact);
   const hospitalBedsByRequestedTimeImpact = Math.floor(availableBeds - severeCasesByRequestedTimeImpact);
   const hospitalBedsByRequestedTimeSevereImpact = Math.floor(availableBeds - severeCasesByRequestedTimeSevereImpact);
-  const casesForICUByRequestedTimeImpact = Math.floor(0.05 * Math.floor(infectionsByRequestedTimeImpact));
-  const casesForICUByRequestedTimeSevereImpact = Math.floor(0.05 * Math.floor(infectionsByRequestedTimeSevereImpact));
-  const casesForVentilatorsByRequestedTimeImpact = Math.floor(0.02 * Math.floor(infectionsByRequestedTimeImpact));
-  const casesForVentilatorsByRequestedTimeSevereIpact = Math.floor(0.02 * Math.floor(infectionsByRequestedTimeSevereImpact));
-  const dollarsInFlightImpact = incomePopulation;
+  const casesForICUByRequestedTimeImpact = Math.floor(0.05 * infectionsByRequestedTimeImpact);
+  const casesForICUByRequestedTimeSevereImpact = Math.floor(0.05 * infectionsByRequestedTimeSevereImpact);
+  const casesForVentilatorsByRequestedTimeImpact = Math.floor(0.02 * infectionsByRequestedTimeImpact);
+  const casesForVentilatorsByRequestedTimeSevereImpact = Math.floor(0.02 * infectionsByRequestedTimeSevereImpact);
+  const dollarsInFlightImpact = Math.floor((infectionsByRequestedTimeImpact * incomePopulation) * dailyIncome * period);
   const dollarsInFlightSevere = Math.floor((infectionsByRequestedTimeSevereImpact * incomePopulation) * dailyIncome * period);
 
 
@@ -51,7 +51,7 @@ const covid19ImpactEstimator = (data) => {
       severeCasesByRequestedTime: severeCasesByRequestedTimeSevereImpact,
       hospitalBedsByRequestedTime: hospitalBedsByRequestedTimeSevereImpact,
       casesForICUByRequestedTime: casesForICUByRequestedTimeSevereImpact,
-      casesForVentilatorsByRequestedTime: casesForVentilatorsByRequestedTimeSevereIpact,
+      casesForVentilatorsByRequestedTime: casesForVentilatorsByRequestedTimeSevereImpact,
       dollarsInFlight: dollarsInFlightSevere
     }
 
