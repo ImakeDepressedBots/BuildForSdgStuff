@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable radix */
 /* eslint-disable max-len */
 const covid19ImpactEstimator = (data) => {
   const inputPayload = data;
@@ -29,8 +30,8 @@ const covid19ImpactEstimator = (data) => {
   const casesForICUByRequestedTimeSevereImpact = Math.floor(0.05 * Math.floor(infectionsByRequestedTimeSevereImpact));
   const casesForVentilatorsByRequestedTimeImpact = Math.floor(0.02 * Math.floor(infectionsByRequestedTimeImpact));
   const casesForVentilatorsByRequestedTimeSevereIpact = Math.floor(0.02 * Math.floor(infectionsByRequestedTimeSevereImpact));
-  const dollarsInFlightImpact = (infectionsByRequestedTimeImpact * incomePopulation) * dailyIncome * period;
-  const dollarsInFlightSevere = (infectionsByRequestedTimeSevereImpact * incomePopulation) * dailyIncome * period;
+  const dollarsInFlightImpact = Math.floor((infectionsByRequestedTimeImpact * parseInt(incomePopulation)) * parseInt(dailyIncome) * period);
+  const dollarsInFlightSevere = Math.floor((infectionsByRequestedTimeSevereImpact * parseInt(incomePopulation)) * parseInt(dailyIncome) * period);
 
 
   return {
