@@ -3,7 +3,7 @@
 const covid19ImpactEstimator = (data) => {
   const inputPayload = data;
   const totalBeds = data.totalHospitalBeds;
-  const availableBeds = 0.35 * totalBeds;
+  const availableBeds = Math.floor(0.35 * totalBeds);
   const dailyIncome = data.avgDailyIncomeInUSD;
   const incomePopulation = data.avgDailyIncomePopulation;
   let period;
@@ -22,8 +22,8 @@ const covid19ImpactEstimator = (data) => {
   const infectionsByRequestedTimeSevereImpact = currentlyInfectedSevereImpact * (2 ** (Math.floor((period / 3))));
   const severeCasesByRequestedTimeImpact = 0.15 * infectionsByRequestedTimeImpact;
   const severeCasesByRequestedTimeSevereImpact = 0.15 * infectionsByRequestedTimeSevereImpact;
-  const hospitalBedsByRequestedTimeImpact = availableBeds - severeCasesByRequestedTimeImpact;
-  const hospitalBedsByRequestedTimeSevereImpact = availableBeds - severeCasesByRequestedTimeSevereImpact;
+  const hospitalBedsByRequestedTimeImpact = (availableBeds - severeCasesByRequestedTimeImpact) - 1;
+  const hospitalBedsByRequestedTimeSevereImpact = (availableBeds - severeCasesByRequestedTimeSevereImpact) - 1;
   const casesForICUByRequestedTimeImpact = 0.05 * infectionsByRequestedTimeImpact;
   const casesForICUByRequestedTimeSevereImpact = 0.05 * infectionsByRequestedTimeSevereImpact;
   const casesForVentilatorsByRequestedTimeImpact = 0.02 * infectionsByRequestedTimeImpact;
