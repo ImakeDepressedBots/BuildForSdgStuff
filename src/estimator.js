@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable max-len */
 const covid19ImpactEstimator = (data) => {
   const inputPayload = data;
   let period;
@@ -13,7 +14,7 @@ const covid19ImpactEstimator = (data) => {
   const { reportedCases } = data;
   const currentlyInfectedImpact = reportedCases * 10;
   const currentlyInfectedSevereImpact = reportedCases * 50;
-    const infectionsByRequestedTimeImpact = currentlyInfectedImpact * (2 ** (Math.floor((period / 3))));
+  const infectionsByRequestedTimeImpact = currentlyInfectedImpact * (2 ** (Math.floor((period / 3))));
   const infectionsByRequestedTimeSevereImpact = currentlyInfectedSevereImpact * (2 ** (Math.floor((period / 3))));
   //   const severeCasesByRequestedTimeImpact = 0.15 * infectionsByRequestedTimeImpact;
   //   const severeCasesByRequestedTimeSevereImpact = 0.15 * infectionsByRequestedTimeSevereImpact;
