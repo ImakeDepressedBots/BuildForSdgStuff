@@ -1,4 +1,4 @@
-/* eslint-disable linebreak-style */
+
 const covid19ImpactEstimator = (data) => {
   const inputPayload = data;
   let period;
@@ -34,5 +34,4 @@ const covid19ImpactEstimator = (data) => {
 
   };
 };
-
 export default covid19ImpactEstimator;
