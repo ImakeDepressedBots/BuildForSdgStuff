@@ -1,4 +1,4 @@
-
+/* eslint-disable linebreak-style */
 const covid19ImpactEstimator = (data) => {
   const inputPayload = data;
   let period;
@@ -15,23 +15,24 @@ const covid19ImpactEstimator = (data) => {
   const currentlyInfectedSevereImpact = reportedCases * 50;
   const infectionsByRequestedTimeImpact = currentlyInfectedImpact * (2 ** (period / 3));
   const infectionsByRequestedTimeSevereImpact = currentlyInfectedSevereImpact * (2 ** (period / 3));
-  const severeCasesByRequestedTimeImpact = 0.15 * infectionsByRequestedTimeImpact;
-  const severeCasesByRequestedTimeSevereImpact = 0.15 * infectionsByRequestedTimeSevereImpact;
+  //   const severeCasesByRequestedTimeImpact = 0.15 * infectionsByRequestedTimeImpact;
+  //   const severeCasesByRequestedTimeSevereImpact = 0.15 * infectionsByRequestedTimeSevereImpact;
 
 
   return {
     data: inputPayload,
     impact: {
       currentlyInfected: currentlyInfectedImpact,
-      infectionsByRequestedTime: infectionsByRequestedTimeImpact,
-      severeCasesByRequestedTime: severeCasesByRequestedTimeImpact
+      infectionsByRequestedTime: infectionsByRequestedTimeImpact
+    //   severeCasesByRequestedTime: severeCasesByRequestedTimeImpact
     },
     severeImpact: {
       currentlyInfected: currentlyInfectedSevereImpact,
-      infectionsByRequestedTime: infectionsByRequestedTimeSevereImpact,
-      severeCasesByRequestedTime: severeCasesByRequestedTimeSevereImpact
+      infectionsByRequestedTime: infectionsByRequestedTimeSevereImpact
+    //   severeCasesByRequestedTime: severeCasesByRequestedTimeSevereImpact
     }
 
   };
 };
+
 export default covid19ImpactEstimator;
