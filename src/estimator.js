@@ -5,16 +5,16 @@ const covid19ImpactEstimator = (data) => {
   const inputPayload = data;
   const totalBeds = data.totalHospitalBeds;
   const availableBeds = Math.ceil(0.35 * totalBeds);
-  const dailyIncome = data.avgDailyIncomeInUSD;
-  const incomePopulation = data.avgDailyIncomePopulation;
+  const dailyIncome = data.region.avgDailyIncomeInUSD;
+  const incomePopulation = data.region.avgDailyIncomePopulation;
   let period;
 
   if (inputPayload.periodType === 'days') {
-    period = parseInt(data.timeToElapse);
+    period = data.timeToElapse;
   } else if (inputPayload.periodType === 'weeks') {
-    period = parseInt(data.timeToElapse * 7);
+    period = data.timeToElapse * 7;
   } else if (inputPayload.periodType === 'months') {
-    period = parseInt(data.timeToElapse * 30);
+    period = data.timeToElapse * 30;
   }
 
   const { reportedCases } = data;
