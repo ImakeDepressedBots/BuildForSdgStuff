@@ -3,7 +3,7 @@
 const covid19ImpactEstimator = (data) => {
   const inputPayload = data;
   const totalBeds = data.totalHospitalBeds;
-  const availableBeds  = Math.floor(0.35 * totalBeds);
+  const availableBeds = Math.floor(0.35 * totalBeds);
   let period;
 
   if (inputPayload.periodType === 'days') {
