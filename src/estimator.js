@@ -15,6 +15,7 @@ const covid19ImpactEstimator = (data) => {
   } else if (inputPayload.periodType === 'months') {
     period = data.timeToElapse * 30;
   }
+
   const { reportedCases } = data;
   const currentlyInfectedImpact = reportedCases * 10;
   const currentlyInfectedSevereImpact = reportedCases * 50;
