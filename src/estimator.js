@@ -4,6 +4,8 @@ const covid19ImpactEstimator = (data) => {
   const inputPayload = data;
   const totalBeds = data.totalHospitalBeds;
   const availableBeds = Math.floor(0.35 * totalBeds);
+  const dailyIncome = data.avgDailyIncomeInUSD;
+  const incomePopulation = data.avgDailyIncomePopulation;
   let period;
 
   if (inputPayload.periodType === 'days') {
@@ -22,6 +24,12 @@ const covid19ImpactEstimator = (data) => {
   const severeCasesByRequestedTimeSevereImpact = 0.15 * infectionsByRequestedTimeSevereImpact;
   const hospitalBedsByRequestedTimeImpact = availableBeds - severeCasesByRequestedTimeImpact;
   const hospitalBedsByRequestedTimeSevereImpact = availableBeds - severeCasesByRequestedTimeSevereImpact;
+  const casesForICUByRequestedTimeImpact = 0.05 * infectionsByRequestedTimeImpact;
+  const casesForICUByRequestedTimeSevereImpact = 0.05 * infectionsByRequestedTimeSevereImpact;
+  const casesForVentilatorsByRequestedTimeImpact = 0.02 * infectionsByRequestedTimeImpact;
+  const casesForVentilatorsByRequestedTimeSevereIpact = 0.02 * infectionsByRequestedTimeSevereImpact;
+  const dollarsInFlightImpact = Math.floor((infectionsByRequestedTimeImpact * incomePopulation * dailyIncome) / period);
+  const dollarsInFlightSevere = Math.floor((infectionsByRequestedTimeSevereImpact * incomePopulation * dailyIncome) / period);
 
 
   return {
@@ -30,13 +38,19 @@ const covid19ImpactEstimator = (data) => {
       currentlyInfected: currentlyInfectedImpact,
       infectionsByRequestedTime: infectionsByRequestedTimeImpact,
       severeCasesByRequestedTime: severeCasesByRequestedTimeImpact,
-      hospitalBedsByRequestedTime: hospitalBedsByRequestedTimeImpact
+      hospitalBedsByRequestedTime: hospitalBedsByRequestedTimeImpact,
+      casesForICUByRequestedTime: casesForICUByRequestedTimeImpact,
+      casesForVentilatorsByRequestedTime: casesForVentilatorsByRequestedTimeImpact,
+      dollarsInFlight: dollarsInFlightImpact
     },
     severeImpact: {
       currentlyInfected: currentlyInfectedSevereImpact,
       infectionsByRequestedTime: infectionsByRequestedTimeSevereImpact,
       severeCasesByRequestedTime: severeCasesByRequestedTimeSevereImpact,
-      hospitalBedsByRequestedTime: hospitalBedsByRequestedTimeSevereImpact
+      hospitalBedsByRequestedTime: hospitalBedsByRequestedTimeSevereImpact,
+      casesForICUByRequestedTime: casesForICUByRequestedTimeSevereImpact,
+      casesForVentilatorsByRequestedTime: casesForVentilatorsByRequestedTimeSevereIpact,
+      dollarsInFlight: dollarsInFlightSevere
     }
 
   };
