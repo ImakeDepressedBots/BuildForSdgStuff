@@ -5,7 +5,7 @@ const covid19ImpactEstimator = (data) => {
   const inputPayload = data;
   const totalBeds = data.totalHospitalBeds;
   const availableBeds = Math.ceil(0.35 * totalBeds);
-  const dailyIncome = data.region.avgDailyIncomeInUSD;
+  //   const dailyIncome = data.region.avgDailyIncomeInUSD;
   const incomePopulation = data.region.avgDailyIncomePopulation;
   let period;
 
