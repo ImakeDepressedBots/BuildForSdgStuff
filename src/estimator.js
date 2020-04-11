@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 const covid19ImpactEstimator = (data) => {
   const inputPayload = data;
-  let period = 9;
+  let period;
 
   if (inputPayload.periodType === 'days') {
     period = data.timeToElapse;
