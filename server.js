@@ -7,7 +7,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.post('/api/v1/on-covid-19', (req, res) => {
-  estimator.default(req);
+  estimator(req);
   // useless Stuff
   res.json(['sssss']);
 });
