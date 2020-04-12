@@ -7,9 +7,8 @@ const app = express();
 app.use(bodyParser.json());
 
 app.post('/api/v1/on-covid-19', (req, res) => {
-  estimator(req);
-  // useless Stuff
-  res.json(['sssss']);
+  const estimates = estimator(req);
+  res.json(estimates);
 });
 
 app.listen(process.env.PORT, () => {
