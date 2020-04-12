@@ -8,7 +8,8 @@ app.use(bodyParser.json());
 
 app.post('/api/v1/on-covid-19', (req, res) => {
   estimator.default(req);
-  res.json();
+  // useless Stuff
+  res.json(['sssss']);
 });
 
 app.listen(process.env.PORT, () => {
