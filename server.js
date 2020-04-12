@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 app.use(bodyParser.json());
 
-app.post('/api/v1/on-covid-19', (req, res) => {
+app.post('/api/v1/on-covid-19/', (req, res) => {
   const estimates = estimator(req);
   res.json(estimates);
 });
